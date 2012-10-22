@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="hide">
+
+    <div class="navbar navbar-inverse navbar-fixed-top" data-bind="with: vmApp">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="./index.html">Test Project</a>
+                <div class="nav-collapse collapse">
+
+                    <p class="navbar-text pull-right">
+                        Logged in as <a href="#" class="navbar-link">Username</a>
+                    </p>
+
+                    <ul class="nav" data-bind="foreach: sections">
+                        <li data-bind="css: { active: $parent.sectionIsVisible($data) }">
+                            <a href="" data-bind="attr: { href: '#' + key }">
+                                <span data-bind="text: title"></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="subhead" data-bind="with: vmApp">
+        <div class="container">
+            <h1 data-bind="text: selectedSection().title"></h1>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="row" data-bind="with: vmApp">
+
+            <div class="span12" data-bind="foreach: sections">
+
+                <section data-bind="visible: $parent.sectionIsVisible($data)">
+                    <p data-bind="template: { name: key }"></p>
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            footer content goes here...
+        </div>
+    </footer>
+
+    <script data-main="js/main" src="js/ext/require.js"></script>
+
+</body>
+</html>
